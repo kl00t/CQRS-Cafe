@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Cafe.Events;
+using System;
 using System.Collections.Generic;
 
-namespace Events.Cafe
+namespace Cafe.Domain.Commands
 {
-    public class DrinksOrdered
+    public class PlaceOrder
     {
         public Guid Id;
         public List<OrderedItem> Items;

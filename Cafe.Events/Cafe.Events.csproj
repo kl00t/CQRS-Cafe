@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{42FE290D-7A80-451B-AC4F-A7B34B3B3D3B}</ProjectGuid>
+    <ProjectGuid>{B195F4C7-41EF-403C-AA05-0018B9DF25F8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>YourDomain</RootNamespace>
-    <AssemblyName>YourDomain</AssemblyName>
+    <RootNamespace>Cafe.Events</RootNamespace>
+    <AssemblyName>Cafe.Events</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,28 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\MarkDrinksServed.cs" />
-    <Compile Include="Commands\OpenTab.cs" />
-    <Compile Include="Commands\PlaceOrder.cs" />
-    <Compile Include="Commands\TabAggregate.cs" />
-    <Compile Include="Exceptions\DrinksNotOutstanding.cs" />
+    <Compile Include="DrinksOrdered.cs" />
+    <Compile Include="DrinksServed.cs" />
+    <Compile Include="FoodOrdered.cs" />
+    <Compile Include="OrderedItem.cs" />
+    <Compile Include="TabClosed.cs" />
+    <Compile Include="TabOpened.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Something\Exceptions.cs" />
-    <Compile Include="Something\MakeSomethingHappen.cs" />
-    <Compile Include="Something\SomethingAggregate.cs" />
-    <Compile Include="Exceptions\TabNotOpen.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Edument.CQRS\Edument.CQRS.csproj">
       <Project>{D2BAB57D-225D-4F4C-9410-ED39495A8FE0}</Project>
       <Name>Edument.CQRS</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Events\Cafe.Events.csproj">
-      <Project>{B195F4C7-41EF-403C-AA05-0018B9DF25F8}</Project>
-      <Name>Cafe.Events</Name>
-    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

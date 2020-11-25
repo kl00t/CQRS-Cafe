@@ -1,4 +1,4 @@
-﻿namespace Events.Cafe
+﻿namespace Cafe.Events
 {
     public class OrderedItem
     {

@@ -1,12 +1,12 @@
 ﻿using Edument.CQRS;
-using Events.Cafe;
+using Cafe.Events;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using YourDomain.Commands;
-using YourDomain.Exceptions;
+using Cafe.Domain.Commands;
+using Cafe.Domain.Exceptions;
 
-namespace YourDomainTests
+namespace Cafe.Tests
 {
     [TestFixture]
     public class TabTests : BDDTest<TabAggregate>
@@ -24,9 +24,9 @@ namespace YourDomainTests
             testId = Guid.NewGuid();
             testTable = 42;
             testWaiter = "Derek";
-            testDrink1 = new OrderedItem { IsDrink = true, Description = "Beer", Price = 3 };
-            testDrink2 = new OrderedItem { IsDrink = true, Description = "Wine", Price = 5 };
-            testFood1 = new OrderedItem { IsDrink = false, Description = "Burger", Price = 11 };
+            testDrink1 = new OrderedItem { IsDrink = true, Description = "Beer", Price = 3, MenuNumber = 1 };
+            testDrink2 = new OrderedItem { IsDrink = true, Description = "Wine", Price = 5, MenuNumber = 2 };
+            testFood1 = new OrderedItem { IsDrink = false, Description = "Burger", Price = 11, MenuNumber = 3 };
         }
 
         [Test]
@@ -158,6 +158,91 @@ namespace YourDomainTests
                     Id = testId,
                     MenuNumbers = new List<int>
                         { testDrink1.MenuNumber, testDrink2.MenuNumber }
+                }));
+        }
+
+        [Test]
+        public void CanNotServeAnUnorderedDrink()
+        {
+            Test(
+                Given(new TabOpened
+                {
+                    Id = testId,
+                    TableNumber = testTable,
+                    Waiter = testWaiter
+                },
+                new DrinksOrdered
+                {
+                    Id = testId,
+                    Items = new List<OrderedItem> { testDrink1 }
+                }),
+                When(new MarkDrinksServed
+                {
+                    Id = testId,
+                    MenuNumbers = new List<int> { testDrink2.MenuNumber }
+                }),
+                ThenFailWith<DrinksNotOutstanding>());
+        }
+
+        [Test]
+        public void CanNotServeAnOrderedDrinkTwice()
+        {
+            Test(
+                Given(new TabOpened
+                {
+                    Id = testId,
+                    TableNumber = testTable,
+                    Waiter = testWaiter
+                },
+                new DrinksOrdered
+                {
+                    Id = testId,
+                    Items = new List<OrderedItem> { testDrink1 }
+                },
+                new DrinksServed
+                {
+                    Id = testId,
+                    MenuNumbers = new List<int> { testDrink1.MenuNumber }
+                }),
+                When(new MarkDrinksServed
+                {
+                    Id = testId,
+                    MenuNumbers = new List<int> { testDrink1.MenuNumber }
+                }),
+                ThenFailWith<DrinksNotOutstanding>());
+        }
+
+        [Test]
+        public void CanCloseTabWithTip()
+        {
+            Test(
+                Given(new TabOpened
+                {
+                    Id = testId,
+                    TableNumber = testTable,
+                    Waiter = testWaiter
+                },
+                new DrinksOrdered
+                {
+                    Id = testId,
+                    Items = new List<OrderedItem> { testDrink2 }
+                },
+                new DrinksServed
+                {
+                    Id = testId,
+                    MenuNumbers = new List<int> { testDrink2.MenuNumber }
+                }),
+                When(new CloseTab
+                {
+                    Id = testId,
+                    AmountPaid = testDrink2.Price + 0.50M
+                }),
+                Then(new TabClosed
+                {
+                    Id = testId,
+                    AmountPaid = testDrink2.Price + 0.50M,
+                    OrderValue = testDrink2.Price,
+                    TipValue = 0.50M
                 }));
         }
     }

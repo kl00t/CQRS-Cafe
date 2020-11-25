@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Events.Cafe
+namespace Cafe.Events
 {
-    public class FoodOrdered
+    public class DrinksServed
     {
         public Guid Id;
-        public List<OrderedItem> Items;
+        public List<int> MenuNumbers;
     }
 }

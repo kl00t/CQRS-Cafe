@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{4306B621-323B-4574-BFBF-2D002491AE1E}</ProjectGuid>
+    <ProjectGuid>{42FE290D-7A80-451B-AC4F-A7B34B3B3D3B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>YourDomainTests</RootNamespace>
-    <AssemblyName>YourDomainTests</AssemblyName>
+    <RootNamespace>Cafe.Domain</RootNamespace>
+    <AssemblyName>Cafe.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,10 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=3.2.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.2.1\lib\net40\nunit.framework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,27 +40,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\CloseTab.cs" />
+    <Compile Include="Commands\MarkDrinksServed.cs" />
+    <Compile Include="Commands\OpenTab.cs" />
+    <Compile Include="Commands\PlaceOrder.cs" />
+    <Compile Include="Commands\TabAggregate.cs" />
+    <Compile Include="Exceptions\DrinksNotOutstanding.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SomethingTests.cs" />
-    <Compile Include="TabTests.cs" />
+    <Compile Include="Exceptions\TabNotOpen.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Edument.CQRS\Edument.CQRS.csproj">
       <Project>{D2BAB57D-225D-4F4C-9410-ED39495A8FE0}</Project>
       <Name>Edument.CQRS</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Events\Cafe.Events.csproj">
+    <ProjectReference Include="..\Cafe.Events\Cafe.Events.csproj">
       <Project>{B195F4C7-41EF-403C-AA05-0018B9DF25F8}</Project>
       <Name>Cafe.Events</Name>
     </ProjectReference>
-    <ProjectReference Include="..\YourDomain\Cafe.Domain.csproj">
-      <Project>{42FE290D-7A80-451B-AC4F-A7B34B3B3D3B}</Project>
-      <Name>Cafe.Domain</Name>
-    </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

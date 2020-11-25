@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace YourDomain.Commands
+namespace Cafe.Events
 {
     /// <summary>
-    ///  Open Tab Command
+    /// Tab Opened Event
     /// </summary>
-    public class OpenTab
+    public class TabOpened
     {
         public Guid Id;
         public int TableNumber;

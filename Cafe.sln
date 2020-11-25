@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Edument.CQRS", "Edument.CQRS\Edument.CQRS.csproj", "{D2BAB57D-225D-4F4C-9410-ED39495A8FE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cafe.Events", "Events\Cafe.Events.csproj", "{B195F4C7-41EF-403C-AA05-0018B9DF25F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cafe.Events", "Cafe.Events\Cafe.Events.csproj", "{B195F4C7-41EF-403C-AA05-0018B9DF25F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cafe.Domain", "YourDomain\Cafe.Domain.csproj", "{42FE290D-7A80-451B-AC4F-A7B34B3B3D3B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cafe.Domain", "Cafe.Domain\Cafe.Domain.csproj", "{42FE290D-7A80-451B-AC4F-A7B34B3B3D3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cafe.Tests", "YourDomainTests\Cafe.Tests.csproj", "{4306B621-323B-4574-BFBF-2D002491AE1E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cafe.Tests", "Cafe.Tests\Cafe.Tests.csproj", "{4306B621-323B-4574-BFBF-2D002491AE1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

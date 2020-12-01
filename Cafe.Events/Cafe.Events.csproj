@@ -43,6 +43,8 @@
     <Compile Include="DrinksOrdered.cs" />
     <Compile Include="DrinksServed.cs" />
     <Compile Include="FoodOrdered.cs" />
+    <Compile Include="FoodPrepared.cs" />
+    <Compile Include="FoodServed.cs" />
     <Compile Include="OrderedItem.cs" />
     <Compile Include="TabClosed.cs" />
     <Compile Include="TabOpened.cs" />
